@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { ArrowDown } from './icons'
 import { VALUES } from '../data/content'
 import { scrollState, HERO_STAGE_VH } from '../lib/scroll'
 
@@ -11,7 +10,6 @@ import { scrollState, HERO_STAGE_VH } from '../lib/scroll'
 export default function Hero() {
   const introRef = useRef<HTMLDivElement>(null)
   const outroRef = useRef<HTMLDivElement>(null)
-  const cueRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let raf = 0
@@ -26,9 +24,6 @@ export default function Hero() {
         const a = smooth(p, 0.62, 0.92)
         outroRef.current.style.opacity = String(a)
         outroRef.current.style.transform = `translateY(${(1 - a) * 32}px)`
-      }
-      if (cueRef.current) {
-        cueRef.current.style.opacity = String(1 - smooth(p, 0, 0.12))
       }
       raf = requestAnimationFrame(tick)
     }
@@ -76,15 +71,6 @@ export default function Hero() {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Scroll cue */}
-        <div
-          ref={cueRef}
-          className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-muted"
-        >
-          <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
-          <ArrowDown className="animate-bounce" width={16} height={16} />
         </div>
       </div>
     </section>
