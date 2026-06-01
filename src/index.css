@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Lenis smooth-scroll base */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+    margin: 0;
+    overflow-x: hidden;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  ::selection {
+    background: #0000ee;
+    color: #ffffff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Visible keyboard focus (WCAG 2.2 AA) */
+  :focus-visible {
+    outline: 2px solid #0000ee;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f2;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c9c9cd;
+    border-radius: 100px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1e1e1e;
+  }
+}
+
+@layer components {
+  .container-pad {
+    @apply mx-auto w-full max-w-site px-5 md:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted;
+  }
+
+  /* Display headings — large, tight, editorial */
+  .display {
+    @apply font-sans font-500 leading-[0.98] tracking-[-0.02em] text-ink;
+  }
+
+  /* Inline text link, Archivanta style (blue, underlined on hover) */
+  .tlink {
+    @apply text-link underline-offset-4 transition-colors hover:underline;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-3 text-sm font-500
+           transition-all duration-300 ease-expo-out;
+  }
+  .btn-dark {
+    @apply btn bg-black text-white hover:bg-ink;
+  }
+  .btn-light {
+    @apply btn border border-line bg-white text-ink hover:bg-raised;
+  }
+  .btn-blue {
+    @apply btn bg-link text-white hover:brightness-110;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-pill border border-line bg-white px-3 py-1 text-xs text-muted;
+  }
+
+  .card {
+    @apply rounded-md border border-line bg-white overflow-hidden;
+  }
+
+  .hairline {
+    @apply border-t border-line;
+  }
+}
+
+/* Reveal animation base — JS toggles .is-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}

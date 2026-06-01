@@ -1,0 +1,7 @@
+name = "aurea"
+compatibility_date = "2024-09-25"
+
+# Static SPA output from `vite build`.
+[assets]
+directory = "./dist"
+not_found_handling = "single-page-application"

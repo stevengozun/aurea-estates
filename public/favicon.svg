@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="11" fill="#1e1e1e"/>
+  <!-- "A" as an A-frame roofline: apex at top, two legs to the base, with a crossbar -->
+  <path d="M24 11 L37 37 H31.4 L24 21.5 L16.6 37 H11 L24 11 Z" fill="#ffffff"/>
+  <rect x="18.4" y="29.4" width="11.2" height="3" fill="#ffffff"/>
+</svg>
